@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restrict Copy Data Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+			background: #FFFDee; /* Gradient background */
+			color: #333;
+        }
+        /* Disable text selection */
+        * {
+            user-select: none;
+        }
+
+        /* Prevent right-click menu */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        /* Styling for the page */
+        .content {
+            margin: 50px;
+            padding: 20px;
+          /*  border: 1px solid #ccc;*/
+        }
+    </style>
+</head>
+<body>
+<h1> UPSC is a constitutional body which will recruit officers to various government bodies
+<div class="content">
+    <h1>Hello World</h1>
+    <p>This content is restricted from copying, right-clicking, and text selection.</p>
+
+</div>
+
+<script>
+    // Disable right-click (context menu)
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        alert("Right-click is disabled on this page.");
+    });
+
+    // Disable text selection
+    document.addEventListener('selectstart', function (e) {
+        e.preventDefault();
+    });
+
+    // Disable keyboard shortcuts like Ctrl+C, Ctrl+U, Ctrl+Shift+I
+    document.addEventListener('keydown', function (e) {
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 'i')) {
+            e.preventDefault();
+            alert("Copying, viewing source, and developer tools are disabled.");
+        }
+    });
+
+    // Prevent images and other media from being saved via right-click
+    document.querySelectorAll('img').forEach(function(img) {
+        img.oncontextmenu = function() {
+            return false; // Prevent right-click on images
+        };
+    });
+
+</script>
+
+</body>
+</html>
